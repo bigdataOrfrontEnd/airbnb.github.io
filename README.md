@@ -122,14 +122,16 @@ module.exports = {
 
 1. 使用normalize.css 要引入
 2. 创建reset.less
-3. 定义一个variables.less存放颜色
-
-在index.less中统一导入
+3. 定义一个variables.less存放项目通用的颜色
 
 ### 全家桶-Router配置
 
-1. 安装路由
-2. 进行配置
+爱比邻:有三个页面
+
+1. 在views中创建三个文件夹detail   entire home,存放三个组件
+2. npm i  react-router-dom
+3. 编写 routes ,并使用懒加载引入组件
+4. 在App中引入routers
 
 ### 全家桶-Redux状态管理
 
