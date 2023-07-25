@@ -130,7 +130,7 @@ module.exports = {
 
 1. 在views中创建三个文件夹detail   entire home,存放三个组件
 2. npm i  react-router-dom
-3. 编写 routes ,并使用懒加载引入组件
+3. 编写 routes ,并使用懒加载引入组件,会报错:Cannot read properties of undefined (reading 'lazy'),所以需要在入口组件中添加Suspense fallback="loading",`现在可以不加了`
 4. 在App中引入routers
 
 ### 全家桶-Redux状态管理
