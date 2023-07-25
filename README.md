@@ -33,10 +33,90 @@
 
 ### 项目目录结构配置
 
+```
+assets: -----静态资源目录
+base-ui:-----可复用组件模版
+components---组件
+hooks
+router
+services
+utils
+views
+```
+
 ### webpack配置
 
-1. 配置项目别名
-2. 配置less或
+安装 npm i @craco/craco
+
+修改`package.json`文件
+
+```
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+```
+
+在项目根目录下创建`craco.config.js`
+
+1. 配置项目别名craco.config.js
+
+```
+ webpack: {
+    //配置别名
+    "@": resolve("src"),
+    components: resolve("src/components"),
+    utils: resolve("src/utils"),
+  },
+```
+
+将App的路径改为@/App测试是否生效
+
+2. 配置less
+
+npm i craco-less -S
+
+```
+//less
+  plugins: [
+    {
+      plugin: CracoLessPlugin,
+    },
+  ],
+```
+
+#### 整体`craco.config.js`配置
+
+```
+const path = require("path");
+const CracoLessPlugin = require("craco-less");
+// 将当前目录和文件名拼接
+const resolve = (pathname) => {
+  console.log(path.resolve(__dirname, pathname));
+  return path.resolve(__dirname, pathname);
+};
+module.exports = {
+  webpack: {
+    alias: {
+      //配置别名
+      "@": resolve("src"),
+      components: resolve("src/components"),
+      utils: resolve("src/utils"),
+    },
+  },
+  //less
+  plugins: [
+    {
+      plugin: CracoLessPlugin,
+    },
+  ],
+};
+
+```
+
+创建一个index.less测试是否生效
 
 ### CSS样式的重置
 
