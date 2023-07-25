@@ -5,10 +5,31 @@
 ### 创建React项目
 
 - 创建项目的方法:npx create-react-app
+
 - 项目配置:
-  - 配置项目的icon
-  - 配置项目的标题
+
+  - 配置项目的icon: <link rel="icon" href="%PUBLIC_URL%/Airbnb.png" />
+  - 配置项目的标题:  <title>度假房源和公寓出租 - 爱彼迎 - 爱彼迎</title>
   - 配置jsconfig.json
+
+  ```js
+  {
+    "compilerOptions": {
+      "target": "ES5",
+      "module": "ESNext",
+      "baseUrl": "./",
+      "moduleResolution": "node",
+      "paths": {
+        "@/*": ["src/*"]
+      },
+      "jsx": "preserve",
+      "lib": ["ESNext", "DOM", "DOM.Iterable", "ScriptHost"]
+    }
+  }
+
+  ```
+
+  ​
 
 ### 项目目录结构配置
 
