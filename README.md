@@ -136,8 +136,73 @@ module.exports = {
 - Redux状态管理的选择:
   - 普通方式:entire使用
   - RTK:Home中的数据使用
+
 - home中的redux配置
+
   - 安装 npm i @reduxjs/toolkit react-redux
-  - index中合并reducer们
+  - 创建store并合并所有的reducer
+
+  ```js
+  //目录:store/index.js
+  import { configureStore } from "@reduxjs/toolkit";
+  import homeReducer from "./modules/home";
+  console.log(homeReducer);
+  export const store = configureStore({
+    reducer: {
+      home: homeReducer,
+    },
+  });
+  export default store;
+  ```
+
+  - 创建reducer
+
+    ```js
+    import { createSlice } from "@reduxjs/toolkit";
+    const initialState = {
+      value: 0,
+      countt: 1,
+    };
+    export const counterSlice = createSlice({
+      name: "home", //用来进行切片的
+      initialState,
+      reducers: {
+        incrementByAmount: (state, action) => {
+          state.value += action.payload;
+        },
+      },
+    });
+
+    export const { incrementByAmount } = counterSlice.actions;
+
+    export default counterSlice.reducer;
+    ```
+
+  - 在App中测试是否配置成功
+
+    ```jsx
+    import React from "react";
+    import { useRoutes } from "react-router-dom";
+    import { useSelector, useDispatch } from "react-redux";
+    import routers from "./router/router";
+    import { incrementByAmount } from "@/store/modules/home";
+    export default function App() {
+      const cout = useSelector((state) => state.home.value);
+      const couteee = useSelector((state) => state.home.countt);
+      const dispatch = useDispatch();
+
+      return (
+        <div>
+          {useRoutes(routers)}
+          {cout}
+          {couteee}
+          <button onClick={(e) => dispatch(incrementByAmount(1))}>+1</button>
+        </div>
+      );
+    }
+
+    ```
+
+- 普通方式创建entire
 
 ### 网络请求-axios
