@@ -284,13 +284,24 @@ services
 ```jsx
 App组件中
 <div className="app">
-      <div className="">header</div>----后续要换成一个组件
+      <div className="">header</div>----后续要换成一个组件 AppHeader组件
       <div className="page">{useRoutes(routers)}</div>
       <div className="footer">footer</div>----后续换成一个组件
     </div>
 ```
 
 创建header组件
+
+```
+//AppHeader组件
+ <HeaderWrapper>
+      <div className="left">left</div> --- HeaderLeft
+      <div className="center">center</div>---HeaderCenter
+      <div className="right">right</div>---HeaderRight
+    </HeaderWrapper>
+```
+
+继续组件拆分
 
 style string to object 
 
