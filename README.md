@@ -1,7 +1,5 @@
 # 艾比邻项目笔记
 
-## 脚手架创建项目
-
 ### 创建React项目
 
 - 创建项目的方法:npx create-react-app
@@ -134,5 +132,9 @@ module.exports = {
 4. 在App中引入routers
 
 ### 全家桶-Redux状态管理
+
+- Redux状态管理的选择:
+  - 普通方式:entire使用
+  - RTK:Home中的数据使用
 
 ### 网络请求-axios
