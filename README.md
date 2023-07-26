@@ -136,5 +136,8 @@ module.exports = {
 - Redux状态管理的选择:
   - 普通方式:entire使用
   - RTK:Home中的数据使用
+- home中的redux配置
+  - 安装 npm i @reduxjs/toolkit react-redux
+  - index中合并reducer们
 
 ### 网络请求-axios
