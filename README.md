@@ -217,3 +217,51 @@ index.js 统一导出reducer
 代码见:github提交:"普通方式配置redux"
 
 ### 网络请求-axios
+
+目录
+
+```
+services
+----modules
+----request
+	----config.js 存放URL和超时时间等基础配置
+	----index.js 对axios进行二次封装
+----index.js 统一导出文件
+```
+
+具体代码见github提交:axios配置并测试通过
+
+### 问题
+
+代码:
+
+![](D:\workspace\airbnb\mdImg\问题1代码.png)
+
+报错:
+
+![](D:\workspace\airbnb\mdImg\报错日志1.png)
+
+原因:第一次进来是没有数据的,(具体原因目前还没有想到)
+
+解决:
+
+方案1:
+
+```
+{highScore.list && (
+        <ul>
+          {highScore.list.map((item) => {
+            return <li key={item.id}>{item.name}</li>;
+          })}
+        </ul>
+      )}
+```
+
+方法2:
+
+```
+{highScore?.list?.map((item) => {
+        return <li key={item.id}>{item.name}</li>;
+      })}
+```
+
