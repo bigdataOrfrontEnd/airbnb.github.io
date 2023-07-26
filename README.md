@@ -205,4 +205,15 @@ module.exports = {
 
 - 普通方式创建entire
 
+```
+目录结构:
+entire
+constants.js 存放公共常量
+createAction.js 存放action
+reducer.js 存放reducer
+index.js 统一导出reducer
+```
+
+代码见:github提交:"普通方式配置redux"
+
 ### 网络请求-axios
