@@ -265,3 +265,36 @@ services
       })}
 ```
 
+## 头部布局
+
+由于三个页面中的header相似,而不是相同,所以我们有两个选择去写这个header
+
+1. header使用一个实例,根据切换三个不同的页面,显示不同的header,这个header是放在App组件里面的
+2. header在三个页面各写一个,作为页面的一部分去做
+
+**目前采用有难度的第一个方式**
+
+1. 将header按照组件去写,app-header创建index.js中写AppHeader
+2. 将footer按照组件去写,app-footer创建index.js中写AppFooter
+
+使用css in js的方式去写样式 npm i styled-components
+
+#### 首页布局
+
+```jsx
+App组件中
+<div className="app">
+      <div className="">header</div>----后续要换成一个组件
+      <div className="page">{useRoutes(routers)}</div>
+      <div className="footer">footer</div>----后续换成一个组件
+    </div>
+```
+
+创建header组件
+
+style string to object 
+
+**svg的使用**
+
+
+

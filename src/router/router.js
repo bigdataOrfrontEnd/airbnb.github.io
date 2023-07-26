@@ -1,9 +1,11 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
+
 const Detail = React.lazy(() => import("@/views/detail"));
 const Entire = React.lazy(() => import("@/views/entire"));
 const Home = React.lazy(() => import("@/views/home"));
 const NotFund = React.lazy(() => import("@/views/notFound"));
+
 const routers = [
   {
     path: "/",
@@ -26,4 +28,5 @@ const routers = [
     element: <NotFund />,
   },
 ];
+
 export default routers;
