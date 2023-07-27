@@ -295,17 +295,44 @@ App组件中
 ```
 //AppHeader组件
  <HeaderWrapper>
-      <div className="left">left</div> --- HeaderLeft
-      <div className="center">center</div>---HeaderCenter
-      <div className="right">right</div>---HeaderRight
+      <div className="left">left</div> --- HeaderLeft组件
+      <div className="center">center</div>---HeaderCenter组件
+      <div className="right">right</div>---HeaderRight组件
     </HeaderWrapper>
 ```
 
-继续组件拆分
+组件样式
 
-style string to object 
+效果图
 
-**svg的使用**
+![](D:\workspace\airbnb\mdImg\05效果图.png)
+
+审查官网发现使用大量svg图片
+
+处理方式:直接去官网复制svg,然后修改里面的style的写法会使用如下的问题:
+
+`style string to object`
+
+创建utils,将样式转换为对象的形式,
+
+```js
+function styleStrToObject(styleStr) {
+  const obj = {}
+  //这个是将-的第一个字母改为大写
+  const s = styleStr.toLowerCase().replace(/-(.)/g, function (m, g) {
+    return g.toUpperCase();
+  }).replace(/;\s?$/g,"").split(/:|;/g)
+  for (var i = 0; i < s.length; i += 2) {
+    obj[s[i].replace(/\s/g,"")] = s[i+1].replace(/^\s+|\s+$/g,"")
+  }
+
+  return obj
+}
+
+export default styleStrToObject
+```
+
+
 
 
 
