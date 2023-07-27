@@ -332,6 +332,22 @@ function styleStrToObject(styleStr) {
 export default styleStrToObject
 ```
 
+组件样式编写
+
+```js
+HeaderWrapper组件样式
+import styled from "styled-components";
+
+export const HeaderWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 0 24px;
+  height: 80px;
+  border-bottom: 1px solid #eee;
+`;
+
+```
+
 
 
 
