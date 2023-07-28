@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const HeaderWrapper = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   margin: 0 24px;

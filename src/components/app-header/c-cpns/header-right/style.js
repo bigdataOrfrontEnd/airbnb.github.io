@@ -31,8 +31,33 @@ export const RightWrapper = styled.div`
     border: 1px solid #ddd;
     ${(props) => props.theme.mixin.boxShadow}
     cursor: pointer;
-    div {
+    .div {
       margin: 4px;
+    }
+    .pacel {
+      position: absolute;
+      top: 76px;
+      right: 30px;
+      border: 1px solid #ddd;
+      border-radius: 14px;
+      width: 240px;
+      height: 200px;
+      font-weight: 800;
+      font-size: 16px;
+
+      .pitem {
+        height: 40px;
+        line-height: 40px;
+        width: 100%;
+
+        text-align: center;
+        &:hover {
+          background-color: #ddd;
+        }
+      }
+      .lin {
+        border: 1px solid #ddd;
+      }
     }
   }
 `;
