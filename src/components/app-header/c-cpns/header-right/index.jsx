@@ -10,7 +10,7 @@ export default class HeaderRifht extends PureComponent {
       <RightWrapper>
         <div className="item">登录</div>
         <div className="item">注册</div>
-        <div className="global">
+        <div className="item">
           <IconGlobal />
         </div>
 

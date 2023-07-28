@@ -348,7 +348,49 @@ export const HeaderWrapper = styled.div`
 
 ```
 
+## 统一颜色管理
 
+方式一 :
+
+直接在css文件里面写
+
+```css
+//定义
+:root{--primary-color}
+使用:
+@import"文件名"
+ color:var(--primary-color)
+```
+
+方式二:
+
+使用styled-components
+
+```js
+定义
+const theme = {
+  color: {
+    primaryColor: "#ff385c",
+    secondaryColor: "#00848A",
+  },
+  text: {
+    primaryColor: "#484848",
+    secondaryColor: "#222",
+  },
+};
+export default theme;
+使用
+入口文件导入index.js中
+ <Provider store={store}>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ThemeProvider>
+  </Provider>
+使用的地方就可以直接这样用了
+ color: ${(props) => props.theme.text.primaryColor};
+```
 
 
 
