@@ -3,7 +3,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import homeReducer from "./modules/home";
 import entireReducer from "./modules/entire";
-console.log(homeReducer);
 export const store = configureStore({
   reducer: {
     home: homeReducer,
