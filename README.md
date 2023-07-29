@@ -392,5 +392,22 @@ export default theme;
  color: ${(props) => props.theme.text.primaryColor};
 ```
 
+## header完成
+
+## Home页面
+
+### react中图片处理
+
+vue中默认了webpack的配置,对图片无需过多的处理,react把这部分交给开发者自己处理
+
+图片的两种引入方式:
+
+```
+1. import coverImg from "路径"
+2. 直接在引入的地方使用:require("路径")
+```
+
+
+
 
 
