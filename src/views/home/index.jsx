@@ -4,6 +4,7 @@ import { HomeWrapper } from "./style";
 
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { fetchHomeDataAction } from "@/store/modules/home";
+import HiaghtPrice from "./c-cnps/haight";
 const Home = memo(() => {
   const dispatch = useDispatch();
   // 从redux中获取数据
@@ -20,12 +21,8 @@ const Home = memo(() => {
   return (
     <HomeWrapper>
       <Banner />
-      <div>
-        1111
-        {goodPriceInfo?.title}
-        {goodPriceInfo?.list?.map((item) => {
-          return <li key={item.id}>{item.name}</li>;
-        })}
+      <div className="page">
+        <HiaghtPrice goodsInfo={goodPriceInfo} />
       </div>
     </HomeWrapper>
   );

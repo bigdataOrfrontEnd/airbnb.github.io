@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import { BannerWrapper } from "./style";
 const Banner = memo(() => {
-  return <BannerWrapper>Banner</BannerWrapper>;
+  return <BannerWrapper />;
 });
 
 export default Banner;
