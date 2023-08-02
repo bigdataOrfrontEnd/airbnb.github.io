@@ -1,14 +1,14 @@
 # 艾比邻项目笔记
 
-### 创建React项目
+### 创建 React 项目
 
 - 创建项目的方法:npx create-react-app
 
 - 项目配置:
 
-  - 配置项目的icon: <link rel="icon" href="%PUBLIC_URL%/Airbnb.png" />
-  - 配置项目的标题:  <title>度假房源和公寓出租 - 爱彼迎 - 爱彼迎</title>
-  - 配置jsconfig.json
+  - 配置项目的 icon: <link rel="icon" href="%PUBLIC_URL%/Airbnb.png" />
+  - 配置项目的标题: <title>度假房源和公寓出租 - 爱彼迎 - 爱彼迎</title>
+  - 配置 jsconfig.json
 
   ```js
   {
@@ -42,7 +42,7 @@ utils
 views
 ```
 
-### webpack配置
+### webpack 配置
 
 安装 npm i @craco/craco
 
@@ -59,7 +59,7 @@ views
 
 在项目根目录下创建`craco.config.js`
 
-1. 配置项目别名craco.config.js
+1. 配置项目别名 craco.config.js
 
 ```
  webpack: {
@@ -70,9 +70,9 @@ views
   },
 ```
 
-将App的路径改为@/App测试是否生效
+将 App 的路径改为@/App 测试是否生效
 
-2. 配置less
+2. 配置 less
 
 npm i craco-less -S
 
@@ -114,33 +114,34 @@ module.exports = {
 
 ```
 
-创建一个index.less测试是否生效
+创建一个 index.less 测试是否生效
 
-### CSS样式的重置
+### CSS 样式的重置
 
-1. 使用normalize.css 要引入
-2. 创建reset.less
-3. 定义一个variables.less存放项目通用的颜色
+1. 使用 normalize.css 要引入
+2. 创建 reset.less
+3. 定义一个 variables.less 存放项目通用的颜色
 
-### 全家桶-Router配置
+### 全家桶-Router 配置
 
 爱比邻:有三个页面
 
-1. 在views中创建三个文件夹detail   entire home,存放三个组件
-2. npm i  react-router-dom
-3. 编写 routes ,并使用懒加载引入组件,会报错:Cannot read properties of undefined (reading 'lazy'),所以需要在入口组件中添加Suspense fallback="loading",`现在可以不加了`
-4. 在App中引入routers
+1. 在 views 中创建三个文件夹 detail entire home,存放三个组件
+2. npm i react-router-dom
+3. 编写 routes ,并使用懒加载引入组件,会报错:Cannot read properties of undefined (reading 'lazy'),所以需要在入口组件中添加 Suspense fallback="loading",`现在可以不加了`
+4. 在 App 中引入 routers
 
-### 全家桶-Redux状态管理
+### 全家桶-Redux 状态管理
 
-- Redux状态管理的选择:
-  - 普通方式:entire使用
-  - RTK:Home中的数据使用
+- Redux 状态管理的选择:
 
-- home中的redux配置
+  - 普通方式:entire 使用
+  - RTK:Home 中的数据使用
+
+- home 中的 redux 配置
 
   - 安装 npm i @reduxjs/toolkit react-redux
-  - 创建store并合并所有的reducer
+  - 创建 store 并合并所有的 reducer
 
   ```js
   //目录:store/index.js
@@ -155,7 +156,7 @@ module.exports = {
   export default store;
   ```
 
-  - 创建reducer
+  - 创建 reducer
 
     ```js
     import { createSlice } from "@reduxjs/toolkit";
@@ -178,7 +179,7 @@ module.exports = {
     export default counterSlice.reducer;
     ```
 
-  - 在App中测试是否配置成功
+  - 在 App 中测试是否配置成功
 
     ```jsx
     import React from "react";
@@ -200,10 +201,9 @@ module.exports = {
         </div>
       );
     }
-
     ```
 
-- 普通方式创建entire
+- 普通方式创建 entire
 
 ```
 目录结构:
@@ -214,7 +214,7 @@ reducer.js 存放reducer
 index.js 统一导出reducer
 ```
 
-代码见:github提交:"普通方式配置redux"
+代码见:github 提交:"普通方式配置 redux"
 
 ### 网络请求-axios
 
@@ -229,7 +229,7 @@ services
 ----index.js 统一导出文件
 ```
 
-具体代码见github提交:axios配置并测试通过
+具体代码见 github 提交:axios 配置并测试通过
 
 ### 问题
 
@@ -245,7 +245,7 @@ services
 
 解决:
 
-方案1:
+方案 1:
 
 ```
 {highScore.list && (
@@ -257,7 +257,7 @@ services
       )}
 ```
 
-方法2:
+方法 2:
 
 ```
 {highScore?.list?.map((item) => {
@@ -267,17 +267,17 @@ services
 
 ## 头部布局
 
-由于三个页面中的header相似,而不是相同,所以我们有两个选择去写这个header
+由于三个页面中的 header 相似,而不是相同,所以我们有两个选择去写这个 header
 
-1. header使用一个实例,根据切换三个不同的页面,显示不同的header,这个header是放在App组件里面的
-2. header在三个页面各写一个,作为页面的一部分去做
+1. header 使用一个实例,根据切换三个不同的页面,显示不同的 header,这个 header 是放在 App 组件里面的
+2. header 在三个页面各写一个,作为页面的一部分去做
 
 **目前采用有难度的第一个方式**
 
-1. 将header按照组件去写,app-header创建index.js中写AppHeader
-2. 将footer按照组件去写,app-footer创建index.js中写AppFooter
+1. 将 header 按照组件去写,app-header 创建 index.js 中写 AppHeader
+2. 将 footer 按照组件去写,app-footer 创建 index.js 中写 AppFooter
 
-使用css in js的方式去写样式 npm i styled-components
+使用 css in js 的方式去写样式 npm i styled-components
 
 #### 首页布局
 
@@ -290,7 +290,7 @@ App组件中
     </div>
 ```
 
-创建header组件
+创建 header 组件
 
 ```
 //AppHeader组件
@@ -307,35 +307,39 @@ App组件中
 
 ![](D:\workspace\airbnb\mdImg\05效果图.png)
 
-审查官网发现使用大量svg图片
+审查官网发现使用大量 svg 图片
 
-处理方式:直接去官网复制svg,然后修改里面的style的写法会使用如下的问题:
+处理方式:直接去官网复制 svg,然后修改里面的 style 的写法会使用如下的问题:
 
 `style string to object`
 
-创建utils,将样式转换为对象的形式,
+创建 utils,将样式转换为对象的形式,
 
 ```js
 function styleStrToObject(styleStr) {
-  const obj = {}
+  const obj = {};
   //这个是将-的第一个字母改为大写
-  const s = styleStr.toLowerCase().replace(/-(.)/g, function (m, g) {
-    return g.toUpperCase();
-  }).replace(/;\s?$/g,"").split(/:|;/g)
+  const s = styleStr
+    .toLowerCase()
+    .replace(/-(.)/g, function (m, g) {
+      return g.toUpperCase();
+    })
+    .replace(/;\s?$/g, "")
+    .split(/:|;/g);
   for (var i = 0; i < s.length; i += 2) {
-    obj[s[i].replace(/\s/g,"")] = s[i+1].replace(/^\s+|\s+$/g,"")
+    obj[s[i].replace(/\s/g, "")] = s[i + 1].replace(/^\s+|\s+$/g, "");
   }
 
-  return obj
+  return obj;
 }
 
-export default styleStrToObject
+export default styleStrToObject;
 ```
 
 组件样式编写
 
 ```js
-HeaderWrapper组件样式
+HeaderWrapper组件样式;
 import styled from "styled-components";
 
 export const HeaderWrapper = styled.div`
@@ -345,14 +349,13 @@ export const HeaderWrapper = styled.div`
   height: 80px;
   border-bottom: 1px solid #eee;
 `;
-
 ```
 
 ## 统一颜色管理
 
 方式一 :
 
-直接在css文件里面写
+直接在 css 文件里面写
 
 ```css
 //定义
@@ -364,7 +367,7 @@ export const HeaderWrapper = styled.div`
 
 方式二:
 
-使用styled-components
+使用 styled-components
 
 ```js
 定义
@@ -392,13 +395,13 @@ export default theme;
  color: ${(props) => props.theme.text.primaryColor};
 ```
 
-## header完成
+## header 完成
 
-## Home页面
+## Home 页面
 
-### react中图片处理
+### react 中图片处理
 
-vue中默认了webpack的配置,对图片无需过多的处理,react把这部分交给开发者自己处理
+vue 中默认了 webpack 的配置,对图片无需过多的处理,react 把这部分交给开发者自己处理
 
 图片的两种引入方式:
 
@@ -407,21 +410,20 @@ vue中默认了webpack的配置,对图片无需过多的处理,react把这部分
 2. 直接在引入的地方使用:require("路径")
 ```
 
-###  配置后端数据在redux中
+### 配置后端数据在 redux 中
 
-#### 使用RTK
+#### 使用 RTK
 
 1. 初始化数据
 
-2. 创建reducer
+2. 创建 reducer
 
-3. 创建action用于存放后端请求接口
+3. 创建 action 用于存放后端请求接口
 
 4. 派发异步请求事件
 
-5. 将数据统一放入到store里面(目前使用第一种方式)
+5. 将数据统一放入到 store 里面(目前使用第一种方式)
 
-6. 使用hooks或其他方式拿到数据
+6. 使用 hooks 或其他方式拿到数据
 
    ### 高性价比房源样式编写
-
