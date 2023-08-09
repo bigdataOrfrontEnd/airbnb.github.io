@@ -24,6 +24,8 @@ const Room = memo((props) => {
   );
 });
 
-Room.propTypes = {};
+Room.propTypes = {
+  item: PropTypes.object,
+};
 
 export default Room;
