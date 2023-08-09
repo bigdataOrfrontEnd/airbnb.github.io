@@ -7,8 +7,9 @@ export const HeaderWrapper = styled.div`
     margin-bottom: 16px;
   }
   .subtitle {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
     margin-bottom: 16px;
+    color: #ddd;
   }
 `;

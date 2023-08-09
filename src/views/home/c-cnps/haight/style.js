@@ -7,11 +7,4 @@ export const HiaghtPriceWrapper = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
   }
-  .item {
-    width: 246px;
-    .ImageDiv {
-      width: 246px;
-      border-radius: 4px;
-    }
-  }
 `;

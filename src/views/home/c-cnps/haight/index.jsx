@@ -7,10 +7,10 @@ const HiaghtPrice = memo((props) => {
   const { goodsInfo } = props;
   return (
     <HiaghtPriceWrapper>
-      <SectionHeader title={goodsInfo.title} />
+      <SectionHeader title={goodsInfo.title} subTitle={goodsInfo.subtitle} />
       <div className="inner">
         {goodsInfo?.list?.map((item, index) => {
-          return <Room item={item} key={index} />;
+          return <Room roomData={item} key={index} />;
         })}
       </div>
     </HiaghtPriceWrapper>

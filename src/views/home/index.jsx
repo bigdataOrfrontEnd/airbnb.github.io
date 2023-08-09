@@ -19,14 +19,14 @@ const Home = memo(() => {
   useEffect(() => {
     dispatch(fetchHomeDataAction());
   }, [dispatch]);
-  console.log(highScoreInfo.subtitle);
+  console.log(goodPriceInfo);
   return (
     <HomeWrapper>
       <Banner />
 
       <div className="page">
-        {highScoreInfo && highScoreInfo.subtitle}
         <HiaghtPrice goodsInfo={goodPriceInfo} />
+        <HiaghtPrice goodsInfo={highScoreInfo} />
       </div>
     </HomeWrapper>
   );

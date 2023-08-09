@@ -1,23 +1,32 @@
 import PropTypes from "prop-types";
 import React, { memo } from "react";
+import { Rate } from "antd";
 import { RoomWrapper } from "./style";
 
 const Room = memo((props) => {
-  const { item } = props;
+  const { roomData } = props;
   return (
-    <RoomWrapper>
-      <div className="item" key={item.id}>
-        <img className="ImageDiv" src={item.picture_url} alt="" />
-
-        <div>
-          {item.verify_info.messages.map((item2) => (
-            <span key={item2}>{item2}</span>
-          ))}
+    <RoomWrapper color={roomData.verify_info.text_color}>
+      <div className="item" key={roomData.id}>
+        <div className="ImageDiv">
+          <img src={roomData.picture_url} alt="" />
         </div>
-        <h2>{item.name}</h2>
-        <div>{item.price_format}/晚</div>
-        <div>
-          {item.reviews_count}*{item?.bottom_info?.content}
+
+        <div
+          className="desc"
+          style={{ color: roomData.verify_info.text_color }}
+        >
+          {roomData.verify_info.messages.join("*")}
+        </div>
+        <h2 className="name">{roomData.name}</h2>
+        <div className="price">{roomData.price_format}/晚</div>
+        <div className="bootom">
+          <Rate
+            allowHalf
+            defaultValue={roomData.star_rating}
+            style={{ color: roomData.star_rating_color }}
+          />
+          {roomData.reviews_count}*{roomData?.bottom_info?.content}
         </div>
       </div>
     </RoomWrapper>
