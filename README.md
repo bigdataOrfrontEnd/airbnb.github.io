@@ -427,3 +427,12 @@ vue 中默认了 webpack 的配置,对图片无需过多的处理,react 把这�
 6. 使用 hooks 或其他方式拿到数据
 
    ### 高性价比房源样式编写
+
+# 高评分模块
+
+接口: /home/goodprice
+
+# 热门目的地
+
+接口:/home/discount
+
