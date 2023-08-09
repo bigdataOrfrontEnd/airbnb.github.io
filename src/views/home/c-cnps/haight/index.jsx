@@ -9,8 +9,8 @@ const HiaghtPrice = memo((props) => {
     <HiaghtPriceWrapper>
       <SectionHeader title={goodsInfo.title} />
       <div className="inner">
-        {goodsInfo?.list?.map((item) => {
-          return <Room item={item} />;
+        {goodsInfo?.list?.map((item, index) => {
+          return <Room item={item} key={index} />;
         })}
       </div>
     </HiaghtPriceWrapper>

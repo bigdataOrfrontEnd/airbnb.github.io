@@ -8,9 +8,10 @@ import HiaghtPrice from "./c-cnps/haight";
 const Home = memo(() => {
   const dispatch = useDispatch();
   // 从redux中获取数据
-  const { goodPriceInfo } = useSelector(
+  const { goodPriceInfo, highScoreInfo } = useSelector(
     (state) => ({
       goodPriceInfo: state.home.goodPriceInfo,
+      highScoreInfo: state.home.highScoreInfo,
     }),
     shallowEqual
   );
@@ -18,10 +19,13 @@ const Home = memo(() => {
   useEffect(() => {
     dispatch(fetchHomeDataAction());
   }, [dispatch]);
+  console.log(highScoreInfo.subtitle);
   return (
     <HomeWrapper>
       <Banner />
+
       <div className="page">
+        {highScoreInfo && highScoreInfo.subtitle}
         <HiaghtPrice goodsInfo={goodPriceInfo} />
       </div>
     </HomeWrapper>
