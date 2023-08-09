@@ -1,5 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getHightGoodProceData, getHomeHighScoreData } from "@/services";
+import {
+  getHightGoodProceData,
+  getHomeHighScoreData,
+  getHomeDiscountData,
+} from "@/services";
 //封装接口请求的action,在home问调用,fetchdata名字,可以在调式工具看到
 export const fetchHomeDataAction = createAsyncThunk(
   "fetchdata",
@@ -10,6 +14,9 @@ export const fetchHomeDataAction = createAsyncThunk(
     getHomeHighScoreData().then((res) => {
       dispatch(changeHighScoreInfoAction(res));
     });
+    getHomeDiscountData().then((res) =>
+      dispatch(changeDiscountInfoAction(res))
+    );
   }
 );
 export const counterSlice = createSlice({
@@ -17,6 +24,7 @@ export const counterSlice = createSlice({
   initialState: {
     goodPriceInfo: {}, //返回来的是对象
     highScoreInfo: {}, //高评分房源
+    discountInfo: {},
   },
   reducers: {
     changeGoodPriceInfoAction(state, { payload }) {
@@ -24,6 +32,9 @@ export const counterSlice = createSlice({
     },
     changeHighScoreInfoAction(state, { payload }) {
       state.highScoreInfo = payload;
+    },
+    changeDiscountInfoAction(state, { payload }) {
+      state.discountInfo = payload;
     },
   },
   extraReducers: {
@@ -34,7 +45,10 @@ export const counterSlice = createSlice({
   },
 });
 
-export const { changeGoodPriceInfoAction, changeHighScoreInfoAction } =
-  counterSlice.actions;
+export const {
+  changeGoodPriceInfoAction,
+  changeHighScoreInfoAction,
+  changeDiscountInfoAction,
+} = counterSlice.actions;
 
 export default counterSlice.reducer;
