@@ -19,6 +19,9 @@ export const FooterWrapper = styled.div`
         a {
           color: #ddd;
           font-size: 16px;
+          &:hover {
+            text-decoration: underline;
+          }
         }
       }
     }
