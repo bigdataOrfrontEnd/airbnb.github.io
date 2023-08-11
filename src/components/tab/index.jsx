@@ -1,10 +1,15 @@
 import PropTypes from "prop-types";
 import React, { memo } from "react";
+import { TabsWrapper } from "./style";
 
 const TabButton = memo((props) => {
-  return <div>TabButton</div>;
+  const { destAddress } = props;
+  console.log(destAddress);
+  return <TabsWrapper>TabButton</TabsWrapper>;
 });
 
-TabButton.propTypes = {};
+TabButton.propTypes = {
+  destAddress: PropTypes.array,
+};
 
 export default TabButton;

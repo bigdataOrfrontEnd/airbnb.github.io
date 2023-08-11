@@ -436,3 +436,14 @@ vue 中默认了 webpack 的配置,对图片无需过多的处理,react 把这�
 
 接口:/home/discount
 
+# 热门推荐
+
+接口:/home/hotrecommenddest
+
+# 最想去的地方
+
+接口:/home/longfor
+
+# plus 数据
+
+接口:/home/plus
