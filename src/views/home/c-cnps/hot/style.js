@@ -6,4 +6,7 @@ export const HotWrapper = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
   }
+  .tab {
+    margin: 10px 0px;
+  }
 `;

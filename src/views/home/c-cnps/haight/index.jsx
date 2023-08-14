@@ -10,7 +10,7 @@ const HiaghtPrice = memo((props) => {
     <HiaghtPriceWrapper>
       <SectionHeader title={goodsInfo.title} subTitle={goodsInfo.subtitle} />
       <div className="inner">
-        {goodsInfo?.list.slice(0, 8)?.map((item, index) => {
+        {goodsInfo?.list?.slice(0, 8)?.map((item, index) => {
           return <Room roomData={item} key={index} />;
         })}
       </div>
