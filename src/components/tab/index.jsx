@@ -1,37 +1,23 @@
 import PropTypes from "prop-types";
 import React, { memo, useState } from "react";
 import { TabsWrapper } from "./style";
-import { Checkbox } from "antd";
-const TabButton = memo((props) => {
-  const str = "pyhton";
-  const [angyType, setAnyType] = useState(str.split(","));
-  const anylysisiOpiton = [
-    {
-      label: "java",
-      value: "java",
-    },
-    {
-      label: "mapp",
-      value: "mapper",
-    },
-    {
-      label: "python",
-      value: "pyhton",
-    },
-  ];
-  const onChange = (checkedValues) => {
-    setAnyType(checkedValues);
-    console.log("checked = ", checkedValues);
-  };
-  const { destAddress } = props;
-  console.log(destAddress);
+
+const TabButton = memo((props) => { 
+  const [currentIndex,setCurrentIndex]=useState(0)
+  const { destAddress,tabClick } = props;
+  const itemClickHandle=(index,item)=>{
+    setCurrentIndex(index)
+    tabClick(item)
+    console.log(index,item);
+
+  }
   return (
     <TabsWrapper>
-      <Checkbox.Group
-        options={anylysisiOpiton}
-        defaultValue={angyType}
-        onChange={onChange}
-      />
+      {
+        destAddress?.map((item,index)=>{
+          return <div className={`itemm ${index===currentIndex?"active":" "}`} key={index} onClick={e=>itemClickHandle(index,item.name)}>{item.name}</div>
+        })
+      }
     </TabsWrapper>
   );
 });
