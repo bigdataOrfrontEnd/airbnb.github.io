@@ -4,7 +4,7 @@ import TabButton from "@/components/tab";
 import { Tabs } from "antd";
 import SectionHeader from "@/components/section-header";
 import Room from "@/components/room-item";
-
+import ScrollView from "@/base-ui/index";
 const Hot = memo((props) => {
   const { goodsInfo } = props;
   //dest_list 中的name
@@ -40,6 +40,9 @@ const Hot = memo((props) => {
           items={items}
           onChange={onChange}
         />
+        <div style={{ width: "200px" }}>
+          <ScrollView></ScrollView>
+        </div>
       </div>
       <div className="inner">
         {goodsInfo?.dest_list?.[name]?.map((item, index) => {

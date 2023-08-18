@@ -21,4 +21,10 @@ export const HotWrapper = styled.div`
     background-color: #ddd;
     color: black;
   }
+  .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: black;
+  }
+  .ant-tabs-ink-bar.ant-tabs-ink-bar-animated {
+    display: none;
+  }
 `;

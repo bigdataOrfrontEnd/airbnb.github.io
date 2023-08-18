@@ -5,6 +5,7 @@ import Hot from "./c-cnps/hot";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { fetchHomeDataAction } from "@/store/modules/home";
 import HiaghtPrice from "./c-cnps/haight";
+
 const Home = memo(() => {
   const dispatch = useDispatch();
   // 从redux中获取数据
