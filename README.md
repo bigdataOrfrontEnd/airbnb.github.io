@@ -457,3 +457,9 @@ vue 中默认了 webpack 的配置,对图片无需过多的处理,react 把这�
 # 请求数据
 
 接口: /entire/list
+
+## 问题
+
+A component suspended while responding to synchronous input. This will cause the UI to be replaced with a loading indicator. To fix, updates that suspend should be wrapped with startTransition
+
+需要在入口处加入 Suspense,这个是 react 包里面的
