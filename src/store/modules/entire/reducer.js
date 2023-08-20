@@ -1,11 +1,17 @@
-import { Addnumber } from "./constants";
+import * as ActionTypes from "./constants";
 const initiate = {
-  couter: 1,
+  currentPage: 0, //当前页面
+  roomList: [], //房间列表
+  totalCount: 0, //总页数
 };
 function reducer(state = initiate, action) {
   switch (action.type) {
-    case Addnumber:
-      return { ...state, couter: state.couter + action.couter };
+    case ActionTypes.CHANGE_CURRENT_PAGE:
+      return { ...state, currentPage: action.currentPage };
+    case ActionTypes.CHANGE_ROOM_LIST:
+      return { ...state, roomList: action.roomList };
+    case ActionTypes.CHANGE_TOTAL_COUNT:
+      return { ...state, totalCount: action.totalCount };
     default:
       return state;
   }

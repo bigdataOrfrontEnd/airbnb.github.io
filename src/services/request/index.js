@@ -39,5 +39,6 @@ class HYRequest {
 
 // 导出实例
 const hyRequest = new HYRequest(BASE_URL, TIMEOUT);
+const newRequest = new HYRequest("baseURL", TIMEOUT);
 
 export default hyRequest;

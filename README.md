@@ -1,5 +1,7 @@
 # 艾比邻项目笔记
 
+不要假装努力，结果不会陪你演戏！
+
 ### 创建 React 项目
 
 - 创建项目的方法:npx create-react-app
@@ -447,3 +449,17 @@ vue 中默认了 webpack 的配置,对图片无需过多的处理,react 把这�
 # plus 数据
 
 接口:/home/plus
+
+# 全局过滤条件的展示和选中
+
+使用模拟的数据
+
+# 请求数据
+
+接口: /entire/list
+
+## 问题
+
+A component suspended while responding to synchronous input. This will cause the UI to be replaced with a loading indicator. To fix, updates that suspend should be wrapped with startTransition
+
+需要在入口处加入 Suspense,这个是 react 包里面的
