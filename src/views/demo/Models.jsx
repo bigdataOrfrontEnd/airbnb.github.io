@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Modal, Checkbox } from "antd";
 
 export default function Models(props) {
@@ -7,6 +7,7 @@ export default function Models(props) {
   console.log(selectData);
   const handleOk = () => {
     z(false);
+    dd(formData);
   };
   const handleCancel = () => {
     z(false);
@@ -38,8 +39,6 @@ export default function Models(props) {
   //第二个问题,老婆说的深拷贝什么的是不是更简单一些如何去做
   const onChange = (checkedValues, name) => {
     formData[name] = checkedValues;
-
-    dd(formData);
   };
 
   useEffect(() => {});
@@ -58,7 +57,6 @@ export default function Models(props) {
               options={options}
               defaultValue={item.age}
               onChange={(e) => onChange(e, item.name)}
-              name={item.name}
             />
           </div>
         );

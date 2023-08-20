@@ -76,7 +76,13 @@ export default function Demo() {
     setIsModalOpen(z);
   };
   const dd = (dd) => {
-    console.log("dd", dd);
+    const Data = data.filter((v) => {
+      return selectedRowKeys.indexOf(v.key) > -1;
+    });
+    Data.forEach((item) => {
+      item.age = dd[item.name];
+    });
+    console.log("11", Data);
   };
   return (
     <DemoWrapper>
