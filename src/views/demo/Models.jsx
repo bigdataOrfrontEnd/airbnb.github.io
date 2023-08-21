@@ -1,10 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Modal, Checkbox } from "antd";
 
 export default function Models(props) {
   const { isModalOpen, z, selectData, dd } = props;
 
-  console.log(selectData);
+  console.log("selectData", selectData);
+
+  let formData = {};
+
   const handleOk = () => {
     z(false);
     dd(formData);
@@ -34,20 +37,21 @@ export default function Models(props) {
       value: "httl",
     },
   ];
-  const formData = {};
+
   //第一个问题,没法传递给父节点,如果使用useState如何去赋值
   //第二个问题,老婆说的深拷贝什么的是不是更简单一些如何去做
   const onChange = (checkedValues, name) => {
+    console.log("checkedValues", checkedValues);
     formData[name] = checkedValues;
   };
 
-  useEffect(() => {});
   return (
     <Modal
       title="可修改的"
       open={isModalOpen}
       onOk={handleOk}
       onCancel={handleCancel}
+      destroyOnClose={true}
     >
       {selectData.map((item) => {
         return (

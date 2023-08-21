@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Table, Button } from "antd";
 import { DemoWrapper } from "./style";
 import Models from "./Models";
+import Demoo from "./yyy";
 
 export default function Demo() {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]); //table表格复选框勾选的值
@@ -72,11 +73,12 @@ export default function Demo() {
     setSelectData(Data);
   };
   const z = (z) => {
-    console.log("z", z);
+    setSelectedRowKeys([]);
     setIsModalOpen(z);
   };
   const dd = (dd) => {
-    const Data = data.filter((v) => {
+    const d = data;
+    const Data = d.filter((v) => {
       return selectedRowKeys.indexOf(v.key) > -1;
     });
     Data.forEach((item) => {
@@ -89,6 +91,7 @@ export default function Demo() {
       <Table columns={columns} dataSource={data} rowSelection={rowSelection} />
       <Button onClick={showModal}>出来弹框</Button>
       <Models isModalOpen={isModalOpen} z={z} selectData={selectData} dd={dd} />
+      {/* <Demoo /> */}
     </DemoWrapper>
   );
 }
