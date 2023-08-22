@@ -11,10 +11,10 @@ function Entire() {
   useEffect(() => {
     dispatch(fetchRoomListAction());
   }, [dispatch]);
-  console.log(FiltType);
+
   return (
     <EntireWrapper>
-      <EntireFilter />
+      <EntireFilter FiltType={FiltType} />
       <EntireRooms />
       <EntirePagination />
     </EntireWrapper>
