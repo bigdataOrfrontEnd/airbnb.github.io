@@ -1,4 +1,9 @@
 import React from "react";
+import Echart from "./views/demo/echart";
 export function Bpp() {
-  return <div>hello</div>;
+  return (
+    <div>
+      <Echart />
+    </div>
+  );
 }
