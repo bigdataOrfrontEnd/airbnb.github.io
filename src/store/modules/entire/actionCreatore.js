@@ -14,14 +14,16 @@ export const changeTotalCountAction = (totalCount) => ({
 });
 
 //异步请求,让页面调用
-export const fetchRoomListAction = () => {
+export const fetchRoomListAction = (page = 0, newPage = 20) => {
   return async (dispatch, getState) => {
-    const currentPage = getState().entire.currentPage;
-    const res = await getEntireRoomList(currentPage * 20);
+    // const currentPage = getState().entire.currentPage;
+
+    const res = await getEntireRoomList(page * newPage);
     const roomList = res.list;
     const totalCount = res.totalCount;
     //派发到redux中
     dispatch(changeRoomListAction(roomList));
     dispatch(changeTotalCountAction(totalCount));
+    dispatch(changeCurrentPageAction(page));
   };
 };

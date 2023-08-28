@@ -1,14 +1,25 @@
-import React, { useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import { Table, Button } from "antd";
 import { DemoWrapper } from "./style";
 import Models from "./Models";
-import Demoo from "./yyy";
 
 export default function Demo() {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]); //table表格复选框勾选的值
   const [isModalOpen, setIsModalOpen] = useState(false); //mode框的开关
   const [selectData, setSelectData] = useState([]); //存放勾选的数据
-
+  const ws = useRef(null);
+  const [message, setMessage] = useState("");
+  useLayoutEffect(() => {
+    ws.current = new WebSocket("ws://localhost:3002");
+    ws.current.onopen = function () {
+      console.log("链接成功");
+      ws.current.send(1111);
+    };
+    ws.current.onmessage = function (event) {
+      console.log("接收到服务端消息" + event.data);
+      setMessage(event.data);
+    };
+  }, [ws]);
   const columns = [
     {
       title: "Name",
@@ -91,7 +102,7 @@ export default function Demo() {
       <Table columns={columns} dataSource={data} rowSelection={rowSelection} />
       <Button onClick={showModal}>出来弹框</Button>
       <Models isModalOpen={isModalOpen} z={z} selectData={selectData} dd={dd} />
-      {/* <Demoo /> */}
+      <div>{message}</div>
     </DemoWrapper>
   );
 }

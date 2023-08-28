@@ -9,7 +9,9 @@ import FiltType from "@/assets/data/filter_data.json";
 function Entire() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchRoomListAction());
+    try {
+      dispatch(fetchRoomListAction());
+    } catch (err) {}
   }, [dispatch]);
 
   return (
