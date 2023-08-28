@@ -1,9 +1,10 @@
 import React from "react";
-import Echart from "./views/demo/echart";
+import { useRoutes } from "react-router-dom";
+import routers from "./router/g_router";
+
 export function Bpp() {
-  return (
-    <div>
-      <Echart />
-    </div>
-  );
+  //拿到路由表
+  const Router = useRoutes(routers);
+
+  return <div>{Router}</div>;
 }

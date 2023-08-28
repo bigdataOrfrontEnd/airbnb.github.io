@@ -39,6 +39,6 @@ class HYRequest {
 
 // 导出实例
 const hyRequest = new HYRequest(BASE_URL, TIMEOUT);
-const newRequest = new HYRequest("baseURL", TIMEOUT);
+const newRequest = new HYRequest("http://geek.itheima.net/v1_0", TIMEOUT);
 
-export default hyRequest;
+export { hyRequest, newRequest };

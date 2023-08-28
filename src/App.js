@@ -12,7 +12,7 @@ export function App() {
   const [show, setShow] = useState(true);
 
   useEffect(() => {
-    if (location.pathname === "/vue") {
+    if (location.pathname.indexOf("/vue") !== -1) {
       setShow(false);
     }
   }, [location]);

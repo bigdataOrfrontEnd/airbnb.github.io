@@ -1,4 +1,4 @@
-import hyRequest from "../index";
+import { hyRequest } from "../index";
 /**
  *
  * @returns 高性价比房源
