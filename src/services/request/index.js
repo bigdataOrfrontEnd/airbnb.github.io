@@ -1,3 +1,4 @@
+import { getToken } from "@/utils";
 import axios from "axios";
 import { BASE_URL, TIMEOUT } from "./config";
 
@@ -10,7 +11,10 @@ class HYRequest {
     });
     // 请求拦截
     this.instance.interceptors.request.use((config) => {
-      console.log("请求成功拦截");
+      const token = getToken();
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
       return config;
     });
     // // 相应拦截
