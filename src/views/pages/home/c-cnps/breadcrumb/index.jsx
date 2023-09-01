@@ -1,10 +1,11 @@
 import React from "react";
 import { Breadcrumb } from "antd";
+import { BreadcurumbWarpper } from "./style";
 export default function Breadcrum(props) {
   const { breadcrumb } = props;
 
   return (
-    <div>
+    <BreadcurumbWarpper>
       <Breadcrumb
         separator=">"
         items={[
@@ -13,6 +14,6 @@ export default function Breadcrum(props) {
           },
         ]}
       />
-    </div>
+    </BreadcurumbWarpper>
   );
 }
