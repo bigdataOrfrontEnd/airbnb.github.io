@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router";
-import Breadcrum from "./c-cnps/breadcrumb";
 import { HomeWarrper } from "./style";
 import Sider from "./c-cnps/Sider";
 import Header from "./c-cnps/Header";
@@ -21,9 +20,9 @@ export default function Home() {
       label: "发布文章",
     },
   ];
+
   const location = useLocation();
   const [breadcrumb, setBreadcrumb] = useState(location.pathname);
-
   const router = (router) => {
     setBreadcrumb(router.key);
   };
@@ -32,8 +31,8 @@ export default function Home() {
     <HomeWarrper>
       <Sider router={router} items={items} />
       <div className="right">
-        <Header />
-        <Breadcrum breadcrumb={breadcrumb} />
+        <Header breadcrumb={breadcrumb} />
+
         <Content />
       </div>
     </HomeWarrper>

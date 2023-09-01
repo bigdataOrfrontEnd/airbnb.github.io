@@ -1,9 +1,12 @@
 import React from "react";
+import Breadcrum from "../breadcrumb/index";
 import { HeaderWarpper } from "./style";
-export default function Header() {
+export default function Header(props) {
   return (
     <HeaderWarpper>
-      <div>logo</div>
+      <div>
+        <Breadcrum breadcrumb={props.breadcrumb} />
+      </div>
       <div>login</div>
     </HeaderWarpper>
   );
