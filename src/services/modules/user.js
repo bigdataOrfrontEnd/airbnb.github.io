@@ -16,8 +16,8 @@ export const getChannels = () => {
   });
 };
 export const getArticles = (play) => {
-  return newRequest.post({
+  return newRequest.get({
     url: "/mp/articles",
-    param: { play },
+    param: play,
   });
 };
