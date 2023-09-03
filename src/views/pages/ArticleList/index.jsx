@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getChannels, getArticles } from "@/services/modules/user";
-import { Select, Radio, Form, Button, TimePicker } from "antd";
+import ArtForm from "./c-cnps/form";
+import ArtList from "./c-cnps/List";
+
 const options = [
   {
     label: "全部",
@@ -24,16 +26,18 @@ const options = [
   },
 ];
 export default function ArticleList() {
-  const [list, setList] = useState(null);
+  const [option, setOption] = useState(null);
+  const [artList, setArtList] = useState(null);
 
   useEffect(() => {
     getChannelList();
-    getArticles();
+    getArtList();
   }, []);
 
   const onfinish = async (values) => {
     console.log(values);
-    const res = await getArticles(values);
+    const { status, channel_id } = values;
+    getArtList(status, channel_id);
   };
 
   //频道后端接口
@@ -42,28 +46,24 @@ export default function ArticleList() {
     const data = res?.data.channels.map((item) => {
       return { lable: item.id, value: item.name };
     });
-    setList(data);
+    setOption(data);
+  };
+  //List
+  const getArtList = async (status, channel_id) => {
+    const res = await getArticles({
+      status,
+      channel_id,
+      page: 1,
+      per_page: 10,
+    });
+
+    setArtList(res);
   };
 
   return (
     <div>
-      <Form onFinish={onfinish} name="form">
-        <Form.Item label="状态" name="option">
-          <Radio.Group options={options}></Radio.Group>
-        </Form.Item>
-        <Form.Item label="频道" name="channel_id">
-          <Select style={{ width: 120 }} options={list} placeholder="请选择" />
-        </Form.Item>
-        <Form.Item label="日期">
-          {/* todo日期组件弹出不好看 */}
-          <TimePicker.RangePicker placeholder />
-        </Form.Item>
-        <Form.Item wrapperCol={{ offset: 1, span: 15 }}>
-          <Button type="primary" htmlType="submit">
-            筛选
-          </Button>
-        </Form.Item>
-      </Form>
+      <ArtForm options={options} onfinish={onfinish} option={option} />
+      <ArtList artList={artList} />
     </div>
   );
 }

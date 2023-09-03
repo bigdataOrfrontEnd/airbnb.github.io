@@ -18,6 +18,6 @@ export const getChannels = () => {
 export const getArticles = (play) => {
   return newRequest.get({
     url: "/mp/articles",
-    param: play,
+    params: play,
   });
 };
