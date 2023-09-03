@@ -7,4 +7,10 @@ export const ArtListWarrapper = styled.div`
     padding-left: 10px;
     border-bottom: 1px solid #ddd;
   }
+  .imgd {
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
 `;

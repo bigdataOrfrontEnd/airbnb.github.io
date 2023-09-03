@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { getChannels, getArticles } from "@/services/modules/user";
+import { getArticles } from "@/services/modules/user";
 import ArtForm from "./c-cnps/form";
 import ArtList from "./c-cnps/List";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchChannelDataAction } from "@/store/modules/user";
 
 const options = [
   {
@@ -26,13 +28,15 @@ const options = [
   },
 ];
 export default function ArticleList() {
-  const [option, setOption] = useState(null);
   const [artList, setArtList] = useState(null);
-
+  const dispatch = useDispatch();
+  const { channel } = useSelector((state) => ({
+    channel: state.channerl.chanell,
+  }));
   useEffect(() => {
-    getChannelList();
+    dispatch(fetchChannelDataAction());
     getArtList();
-  }, []);
+  }, [dispatch]);
 
   const onfinish = async (values) => {
     console.log(values);
@@ -40,14 +44,6 @@ export default function ArticleList() {
     getArtList(status, channel_id);
   };
 
-  //频道后端接口
-  const getChannelList = async () => {
-    const res = await getChannels();
-    const data = res?.data.channels.map((item) => {
-      return { lable: item.id, value: item.name };
-    });
-    setOption(data);
-  };
   //List
   const getArtList = async (status, channel_id) => {
     const res = await getArticles({
@@ -62,7 +58,14 @@ export default function ArticleList() {
 
   return (
     <div>
-      <ArtForm options={options} onfinish={onfinish} option={option} />
+      <ArtForm
+        options={options}
+        onfinish={onfinish}
+        option={channel?.data?.channels?.map((itme) => ({
+          value: itme.id,
+          label: itme.name,
+        }))}
+      />
       <ArtList artList={artList} />
     </div>
   );
