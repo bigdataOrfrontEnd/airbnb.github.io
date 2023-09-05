@@ -5,6 +5,7 @@ import { Bpp } from "./Bpp";
 import Footer from "./components/app-footer";
 import AppHeader from "./components/app-header";
 import routers from "./router/router";
+import Demo from "./views/demo/usememos.jsx";
 
 export function App() {
   const location = useLocation();
@@ -21,6 +22,7 @@ export function App() {
     <>
       {show ? (
         <Suspense fallback={<div>Loading...</div>}>
+          <Demo />
           <div>
             <AppHeader />
             <div className="page">{Routers}</div>
