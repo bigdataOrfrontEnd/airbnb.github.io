@@ -1,5 +1,9 @@
 import React from "react";
-
+import Block from "./Block";
 export default function AllData() {
-  return <div>AllData</div>;
+  return (
+    <div>
+      <Block></Block>
+    </div>
+  );
 }
