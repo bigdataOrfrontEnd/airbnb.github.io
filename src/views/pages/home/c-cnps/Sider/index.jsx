@@ -13,7 +13,7 @@ export default function Sider(props) {
   };
   return (
     <SiderWrapper>
-      <Menu onClick={onClick} mode="inline" items={items} />
+      <Menu onClick={onClick} mode="inline" items={items} theme="dark" />
     </SiderWrapper>
   );
 }

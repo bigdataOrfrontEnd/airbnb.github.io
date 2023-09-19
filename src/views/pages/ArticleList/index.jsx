@@ -39,7 +39,6 @@ export default function ArticleList() {
   }, [dispatch]);
 
   const onfinish = async (values) => {
-    console.log(values);
     const { status, channel_id } = values;
     getArtList(status, channel_id);
   };
@@ -52,8 +51,41 @@ export default function ArticleList() {
       page: 1,
       per_page: 10,
     });
+    const A = (status) => {
+      return options.map((item) => {
+        if (item.value && item.value == status) {
+          return item.label;
+        }
+      });
+    };
+    const dataSource = res?.data?.results.map(
+      (
+        {
+          title,
+          pubdate,
+          read_count,
+          like_count,
+          comment_count,
+          status,
+          cover,
+        },
+        index
+      ) => {
+        return {
+          key: index,
+          cover: cover.images[0],
+          title,
+          status: A(status),
+          pubdate,
+          read_count,
+          comment_count,
+          action: "5",
+          like_count,
+        };
+      }
+    );
 
-    setArtList(res);
+    setArtList(dataSource);
   };
 
   return (

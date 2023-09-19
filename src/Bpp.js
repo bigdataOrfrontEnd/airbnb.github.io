@@ -1,10 +1,13 @@
 import React from "react";
-import { useRoutes } from "react-router-dom";
-import routers from "./router/g_router";
 
+import { Responsive, WidthProvider } from "react-grid-layout";
+import "react-grid-layout/css/styles.css";
+import "react-resizable/css/styles.css";
+const ResponsiveReactGridLayout = WidthProvider(Responsive);
 export function Bpp() {
-  //拿到路由表
-  const Router = useRoutes(routers);
-
-  return <div>{Router}</div>;
+  return (
+    <div>
+      <ResponsiveReactGridLayout></ResponsiveReactGridLayout>
+    </div>
+  );
 }

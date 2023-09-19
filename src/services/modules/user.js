@@ -21,3 +21,10 @@ export const getArticles = (play) => {
     params: play,
   });
 };
+///v1_0/mp/articles
+export const setArticles = (draft, play) => {
+  return newRequest.post({
+    url: `/mp/articles?draft=${draft}`,
+    data: play,
+  });
+};
