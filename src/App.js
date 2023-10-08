@@ -1,6 +1,6 @@
 import React, { useEffect, Suspense, useState } from "react";
 import { useRoutes, useLocation } from "react-router-dom";
-import { Bpp } from "./Bpp";
+import Bpp from "./Bpp";
 
 import Footer from "./components/app-footer";
 import AppHeader from "./components/app-header";

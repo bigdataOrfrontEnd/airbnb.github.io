@@ -1,59 +1,167 @@
 import React, { useEffect, useState } from "react";
-import _ from "lodash";
-import { Responsive, WidthProvider } from "react-grid-layout";
+import { Button, Table, Checkbox, Modal } from "antd";
 import { BppWarrper } from "./styleBpp";
-import "react-grid-layout/css/styles.css";
-import "react-resizable/css/styles.css";
-import { Layout } from "antd";
-const ResponsiveReactGridLayout = WidthProvider(Responsive);
-export function Bpp() {
-  const [layouts, setLayouts] = useState({ lg: [] });
-  useEffect(() => {
-    setLayouts({ lg: generateLayout(["se"]) });
-  }, []);
-  //页面渲染使用的方法
-  const generateDom = () => {
-    return _.map(layouts.lg, function (l, i) {
-      return (
-        <div key={i} className={l.static ? "static" : ""}>
-          <div className="item"></div>
-          {l.static ? (
-            <div className="text">Static-{i}</div>
-          ) : (
-            <div className="text">{i}</div>
-          )}
-        </div>
-      );
-    });
+import Model1 from "@/components/model/Model1";
+import Model2 from "@/components/model/Model2";
+export default function BppTable() {
+  const [isShowAll, setIsShowAll] = useState(false);
+  const [expandRowkeys, setExpendKeys] = useState([]);
+  const [showModel, setShowModel] = useState(false);
+  const dataSource = [
+    {
+      key: "1",
+      productName: "杭银理财XX1产品",
+
+      children: [
+        {
+          key: "5",
+          accountType: "托管户",
+          accountName: "杭银理财有限公司",
+          balance: "50000",
+          lance: "500000",
+          proposed: "2023/01/01",
+          coreBalance: "2023/01/01",
+          operation: "详情",
+        },
+      ],
+    },
+    {
+      key: "2",
+      productName: "杭银理财XX1产品",
+
+      children: [
+        {
+          key: "6",
+          accountType: "托管户",
+          accountName: "杭银理财有限公司",
+          balance: "50000",
+          lance: "500000",
+          proposed: "2023/01/01",
+          coreBalance: "2023/01/01",
+          operation: "详情",
+        },
+      ],
+    },
+  ];
+  const columns = [
+    {
+      title: "产品名称",
+      dataIndex: "productName",
+      key: "productName",
+    },
+    {
+      title: "账户类型",
+      dataIndex: "accountType",
+      key: "accountType",
+      sorter: {
+        compare: (a, b) => a.english - b.english,
+        multiple: 1,
+      },
+    },
+    {
+      title: "账户名称",
+      dataIndex: "accountName",
+      key: "accountName",
+    },
+    {
+      title: "可取余额(元)",
+      dataIndex: "availableBalance",
+      key: "availableBalance",
+    },
+    {
+      title: "可用余额(元)",
+      dataIndex: "balance",
+      key: "balance",
+    },
+    {
+      title: "发生余额(元)",
+      dataIndex: "lance",
+      key: "lance",
+    },
+    {
+      title: "拟起息日",
+      dataIndex: "proposed",
+      key: "proposed",
+    },
+    {
+      title: "核心余额",
+      dataIndex: "coreBalance",
+      key: "coreBalance",
+    },
+    {
+      title: "操作",
+      dataIndex: "operation",
+      key: "operation",
+      render: () => {
+        return (
+          <Button type="primary" onClick={showDetailModel}>
+            详情
+          </Button>
+        );
+      },
+    },
+  ];
+  const showDetailModel = () => {
+    setShowModel(true);
   };
-  const { Content, Sider } = Layout;
+
+  const onExpand = (value, record) => {
+    console.log(value);
+    console.log(record);
+  };
+  const onExpandedRowsChange = (rowKeys) => {
+    console.log(rowKeys);
+    setExpendKeys(rowKeys);
+  };
+  useEffect(() => {
+    if (isShowAll) {
+      let arr = [];
+      dataSource.forEach((item) => {
+        arr.push(item.key);
+      });
+      setExpendKeys(arr);
+    } else {
+      setExpendKeys([]);
+    }
+  }, [isShowAll]);
   return (
     <BppWarrper>
-      <Layout>
-        <Content>
-          <ResponsiveReactGridLayout layouts={layouts}>
-            {generateDom()}
-          </ResponsiveReactGridLayout>
-        </Content>
-        <Sider>
-          <div className="menu">menu</div>
-        </Sider>
-      </Layout>
+      <div className="flee">
+        <div>
+          <Button
+            type="primary"
+            className="btn"
+            onClick={() => {
+              setIsShowAll(!isShowAll);
+            }}
+          >
+            {isShowAll ? "一键关闭" : "一键展开"}
+          </Button>
+          <Button className="btn">核心余额接入</Button>
+          <Button>柜台余额接入</Button>
+        </div>
+        <div className="center">
+          <Checkbox.Group>
+            <Checkbox value="A">差额异项</Checkbox>
+            <Checkbox value="B">可取赤字项</Checkbox>
+            <Checkbox value="c">可用赤字项</Checkbox>
+          </Checkbox.Group>
+        </div>
+        <div>图标</div>
+      </div>
+      <Table
+        dataSource={dataSource}
+        columns={columns}
+        expandedRowKeys={expandRowkeys}
+        onExpand={onExpand}
+        onExpandedRowsChange={onExpandedRowsChange}
+        pagination={{
+          showSizeChanger: true,
+          showQuickJumper: true,
+        }}
+      />
+      <Model1 showModel={showModel} setShowModel={setShowModel} />
+      <Model2 />
     </BppWarrper>
   );
-  //产生布局参数
-  function generateLayout(resizeHandles) {
-    return _.map(_.range(0, 25), function (i) {
-      const y = Math.ceil(Math.random() * 4) + 1;
-      return {
-        x: Math.round(Math.random() * 5) * 2,
-        y: Math.floor(i / 6) * y,
-        w: 2,
-        h: y,
-        i: i.toString(),
-        static: Math.random() < 0.05,
-        resizeHandles,
-      };
-    });
-  }
 }
