@@ -3,10 +3,12 @@ import { Button, Table, Checkbox, Modal } from "antd";
 import { BppWarrper } from "./styleBpp";
 import Model1 from "@/components/model/Model1";
 import Model2 from "@/components/model/Model2";
+import "./test.less";
 export default function BppTable() {
   const [isShowAll, setIsShowAll] = useState(false);
   const [expandRowkeys, setExpendKeys] = useState([]);
   const [showModel, setShowModel] = useState(false);
+  const [activeId, setActiveId] = useState("");
   const dataSource = [
     {
       key: "1",
@@ -36,6 +38,7 @@ export default function BppTable() {
           accountName: "杭银理财有限公司",
           balance: "50000",
           lance: "500000",
+          availableBalance: "00000",
           proposed: "2023/01/01",
           coreBalance: "2023/01/01",
           operation: "详情",
@@ -48,6 +51,7 @@ export default function BppTable() {
       title: "产品名称",
       dataIndex: "productName",
       key: "productName",
+      fixed: "left",
     },
     {
       title: "账户类型",
@@ -67,6 +71,9 @@ export default function BppTable() {
       title: "可取余额(元)",
       dataIndex: "availableBalance",
       key: "availableBalance",
+      render: (text, record) => {
+        return <span style={{ color: "red" }}>{text}</span>;
+      },
     },
     {
       title: "可用余额(元)",
@@ -92,6 +99,7 @@ export default function BppTable() {
       title: "操作",
       dataIndex: "operation",
       key: "operation",
+      fixed: "right",
       render: () => {
         return (
           <Button type="primary" onClick={showDetailModel}>
@@ -108,6 +116,7 @@ export default function BppTable() {
   const onExpand = (value, record) => {
     console.log(value);
     console.log(record);
+    setActiveId(record.key);
   };
   const onExpandedRowsChange = (rowKeys) => {
     console.log(rowKeys);
@@ -159,6 +168,9 @@ export default function BppTable() {
           showSizeChanger: true,
           showQuickJumper: true,
         }}
+        rowClassName={(record, index) =>
+          record.key === activeId ? "active" : ""
+        }
       />
       <Model1 showModel={showModel} setShowModel={setShowModel} />
       <Model2 />
