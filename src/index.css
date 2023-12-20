@@ -1,0 +1,31 @@
+.topCheck{
+
+}
+.item{
+    display: inline-block;
+    padding: 3px 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+.input{
+    height: 29px;
+    padding: 0px 10px;
+    border: 1px solid #ccc;
+    margin: 0px;
+}
+
+.active{
+    border: 1px solid blue;
+}
+.ant-tree-switcher-leaf-line{
+    display: none !important;
+}
+.ant-tree-indent{
+    display: none;
+}
+.ant-tree .ant-tree-node-content-wrapper{
+    margin-left: 20px;
+}
+.ant-tree .ant-tree-node-content-wrapper-normal{
+    margin-left: 40px;
+}

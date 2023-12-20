@@ -9,15 +9,18 @@ import { App } from "@/App";
 
 import { ThemeProvider } from "styled-components";
 import theme from "./assets/theme";
-
+import Selectdemo from "./components/Selectdemo";
+import TreeList from "./index.jsx";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   //   <Suspense fallback="loading"> </Suspense>
   <Provider store={store}>
     {/* 这个就是把我们写的主题给传递给组件了 */}
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>{<App />}</BrowserRouter>
-    </ThemeProvider>
+    {/* <ThemeProvider theme={theme}> */}
+    {/* <BrowserRouter>{<App />}</BrowserRouter> */}
+    {/* </ThemeProvider> */}
+    {/* <Selectdemo /> */}
+    <TreeList />
   </Provider>
 );
